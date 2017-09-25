@@ -33,7 +33,31 @@
     Este diseño muestral se puede llevar a cabo de manera sencilla, generando $n$ valores aleatorios a partir de una distribución uniforme en el intervalo $[0,1]$, de tal manera que $\epsilon_k$ sea el $k$-ésimo valor aleatorio. Entonces se añade el elemento $k$ a la muestra $s$ si se cumple que $\epsilon_k < \pi_k$ y se deja fuera en caso contrario.
 
     \paragraph{}
-    Nótese por tanto, que este diseño muestral no tiene un un tamaño de muestra fijo, sin embargo es posible estimarlo: El tamaño $n_s$ de la muestra obtenida tendrá una esperanza de $E[n_s] = \sum_U\pi_k$ y una varianza $Var[n_s] = \sum_U \pi_k(1-\pi_k)$. Sea $y_k$ una variable de estudio, entonces se cumple que:
+    Nótese por tanto, que este diseño muestral no tiene un un tamaño de muestra fijo, sin embargo es posible estimarlo: El tamaño $n_s$ de la muestra obtenida tendrá una esperanza de $E[n_s] = \sum_U\pi_k$ y una varianza $Var[n_s] = \sum_U \pi_k(1-\pi_k)$.
+
+    \paragraph{}
+    Sea $Y$ la variable de estudio, entonces el $\pi$-estimador (insesgado) de la suma total es:
+
+    \begin{align}
+      t &= \sum_Uy_k & \widehat{t}_\pi &= \sum_s\frac{y_k}{\pi_k}
+    \end{align}
+
+    \paragraph{}
+    Cuya varianza es:
+
+    \begin{align}
+    Var[\widehat{t}_\pi] &= \sum_U(\frac{1}{\pi_k} - 1)y_k^2 &     \widehat{Var}[\widehat{t}_\pi] &= \sum_s(\frac{1}{\pi_k} - 1)\frac{y_k}{\pi_k}
+    \end{align}
+
+    \paragraph{}
+    Dicha estimación de la suma total tiene una varianza muy elevada, para lo cual se propone la elección apropiada de los valores $\pi_k$ a partir de un determinado ratio relacionado con los valores $y_k$, lo cual suele ser inaccesible en la mayoría de casos. Sin embargo, en algunas ocasiones se puede obtener los valores de otra variable $X$ relacionada con la variable de estudio $Y$, de tal manera que los valores $\pi_k$ sean proporcionales a $y_k$.
+
+    \paragraph{}
+    Otra alternativa es la elección de un estimador diferente para la suma total. Por contra, dicho estimador no es insesgado, pero su varianza es mucho menor. Este se indica a continuación:
+
+    \begin{align}
+      \widehat{t}_{alt} &= N \cdot \frac{\sum_s\frac{y_k}{\pi_k}}{\sum_s\frac{1}{\pi_k}}
+    \end{align}
 
 
 
@@ -41,6 +65,7 @@
 %	Bibliographic references
 %-----------------------------
 	\nocite{muest2017}
+  \nocite{sarndal2003model}
 
   \bibliographystyle{alpha}
   \bibliography{bib}
