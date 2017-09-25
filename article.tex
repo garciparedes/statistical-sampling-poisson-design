@@ -19,7 +19,23 @@
   \label{sec:definition}
 
     \paragraph{}
-    [TODO ]
+    El muestreo probabilístico de \emph{Poisson} se caracteriza por ser un diseño muestral con probabilidades desiguales. Es decir, si $\pi_k$ es la probabilidad de añadir al individuo $k \in \{1, ..., N\}$ en la muestra, en este caso no se cumple que $\forall \ i,j \ \pi_i = \pi_j, \ i \neq j$. De esta manera, la estimación de los estadísticos se hace más complicada, sin embargo se añade un mayor grado de versatilidad al muestreo.
+
+    \begin{equation}
+    \label{eq:probability_sample}
+      p(s) = \prod_{k\in s} \pi_k \prod_{k \in U \setminus  s} (1-\pi_k)
+    \end{equation}
+
+    \paragraph{}
+    Si se define la variable $I_k \sim B(\pi_k), \ k \in \{1, ..., N\}$, es decir, como una distribución de \emph{Bernoulli} de parámetro $\pi_k$, entonces la probabilidad de seleccionar la muestra $s$ de entre todo el conjunto de posibles muestras $S$ de una población $U$ se define tal y como se indica en la ecuación \eqref{eq:probability_sample}. En este diseño muestral se cumple la propiedad de que $\pi_{kl} = \pi_k\pi_l \ k \neq l$.
+
+    \paragraph{}
+    Este diseño muestral se puede llevar a cabo de manera sencilla, generando $n$ valores aleatorios a partir de una distribución uniforme en el intervalo $[0,1]$, de tal manera que $\epsilon_k$ sea el $k$-ésimo valor aleatorio. Entonces se añade el elemento $k$ a la muestra $s$ si se cumple que $\epsilon_k < \pi_k$ y se deja fuera en caso contrario.
+
+    \paragraph{}
+    Nótese por tanto, que este diseño muestral no tiene un un tamaño de muestra fijo, sin embargo es posible estimarlo: El tamaño $n_s$ de la muestra obtenida tendrá una esperanza de $E[n_s] = \sum_U\pi_k$ y una varianza $Var[n_s] = \sum_U \pi_k(1-\pi_k)$. Sea $y_k$ una variable de estudio, entonces se cumple que:
+
+
 
 %-----------------------------
 %	Bibliographic references
